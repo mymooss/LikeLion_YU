@@ -94,6 +94,7 @@ const paintFilterTodo = (todo) =>{
     const deleteElement = document.createElement('button');
     deleteElement.classList.add('delBtn');
     deleteElement.innerHTML = "✕";
+    deleteElement.addEventListener('click',()=>deleteTodo(todo.id));
     
     // li 태그에 요소 합치기
     liElement.appendChild(checkElement);
@@ -103,6 +104,7 @@ const paintFilterTodo = (todo) =>{
     // ul 태그에 현재 li 태그 합치기
     todoList.appendChild(liElement);
 };
+clearAll.addEventListener("click",deleteAll);
 const setLeftItems = () => {
     const leftTodo = getAllTodos().filter(todo => todo.isCompleted == false);
     // console.log(leftTodo.length);
@@ -151,6 +153,20 @@ const completeTodo = (todoId) => {
     setLeftItems();
 };
 
+const deleteTodo = (todoId) => {//삭제기능
+    const newTodos = getAllTodos().filter(todo => todo.id !== todoId);//getAllTodos 함수를 사용하여 전체의 todos 배열을 가져오기
+    //filter를 사용하여 todo.id가 todoId가 아닌것만 유지하고 새로운 배열 생성
+    setTodos(newTodos);//남은 todos를 새 배열로 설정
+    paintTodos();//todo-list를 다시 그리기
+    setLeftItems();//남은 할일 수 업데이트
+    
+}
+clearAll.addEventListener("click",()=>deleteAll);
+function deleteAll(){
+    alert('모두지우시겠습니까?');
+    //event.todoList.removeAll();
+}
+
 function getTime(){
     const time = new Date();
     const hour = time.getHours();
@@ -158,7 +174,6 @@ function getTime(){
     const seconds = time.getSeconds();
     clock.innerHTML = `${hour<10 ? `0${hour}`:hour}:${minutes<10 ? `0${minutes}`:minutes}:${seconds<10 ? `0${seconds}`:seconds}`;
 }
-
 function init(){
     setInterval(getTime, 1000);
 }
