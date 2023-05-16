@@ -18,7 +18,7 @@ let curType = 'all'; // 현재 필터값을 저장하는 string -> 'all', 'activ
 // (선택)
 
 // 현재 todos를 매개변수 newTodos로 바꿔주는 함수
-const setTodos = (newTodos) => todos = newTodos; 
+const setTodos = (newTodos) => todos = newTodos; //할일 받으면 새로운 할일로 바꿔주는 함수
 
 // 현재 todos 배열 전체를 반환하는 함수
 const getAllTodos = () => {
@@ -130,7 +130,7 @@ const dbclickTodo = (e, todoId) => {
             if(String(e.target.value).trim() !== ""){
                 updateTodo(e.target.value, todoId);
             }
-            else{
+            else{//수정할때 공백이면
                 alert("현재 입력한 할 일이 없습니다!");
             }
         }
@@ -178,3 +178,4 @@ function init(){
     setInterval(getTime, 1000);
 }
 init();
+
