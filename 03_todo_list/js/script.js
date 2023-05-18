@@ -161,21 +161,10 @@ const deleteTodo = (todoId) => {//삭제기능
     setLeftItems();//남은 할일 수 업데이트
     
 }
-clearAll.addEventListener("click",()=>deleteAll);
-function deleteAll(){
+//clearAll.addEventListener("click",()=>deleteAll);
+/*
+const deleteAll=()=>{
     alert('모두지우시겠습니까?');
     //event.todoList.removeAll();
-}
-
-function getTime(){
-    const time = new Date();
-    const hour = time.getHours();
-    const minutes = time.getMinutes();
-    const seconds = time.getSeconds();
-    clock.innerHTML = `${hour<10 ? `0${hour}`:hour}:${minutes<10 ? `0${minutes}`:minutes}:${seconds<10 ? `0${seconds}`:seconds}`;
-}
-function init(){
-    setInterval(getTime, 1000);
-}
-init();
+}*/
 
