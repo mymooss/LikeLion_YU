@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Article = ({title, body}) =>{
     return (
         <article>
@@ -8,3 +6,5 @@ const Article = ({title, body}) =>{
         </article>
     );
 };
+
+export default Article;

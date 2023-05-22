@@ -1,5 +1,6 @@
+import './App.css';//스타일 적용
 import {useState} from 'react';
-import {Header, Nav, Article, Create, Update} from "./components";
+import {Header, Nav, Article, Create, Update} from "./components";//컨텐츠 폴더에서 해당 파일들 불러오기
 
 const App = () => {
   const [mode, setMode] = useState('WELCOME'); // content에 뭘 띄울지 flag
@@ -13,26 +14,18 @@ const App = () => {
   ])
 
   const handleTopicClick = (topicId) => { // 토픽을 클릭하면?
-    // 읽기 모드로 변경
-    // 현재 클릭한 토픽의 key값으로 id 값 변경
-    setMode('READ');
-    setId(topicId);
+    setMode('READ'); // 읽기 모드로 변경
+    setId(topicId); // 현재 클릭한 토픽의 key값으로 id 값 변경
   };
 
   const handleCreate = (title, body) => { // 완성해보세요
-    // 새로운 topic 생성...{id, title, body}
-		// 새로은 topics 생성...전개 연산자
-    const newTopic = { id: nextId, title: title, body: body}
-    const newTopics = [...topics, newTopic];
+    const newTopic = { id: nextId, title: title, body: body} // 새로운 topic 생성...{id, title, body}
+    const newTopics = [...topics, newTopic]; 	// 새로은 topics 생성...전개 연산자
 
-		// 새로운 topics를 기존 topics에 반영
-    // 생성 끝났으면 읽기 모드로 변경
-    // 읽기 모드로 전환할 현재 토픽 key값 지정
-    // nextId 값 변화 -> 어떻게?
-    setTopics(newTopics);
-    setMode('READ');
-    setId(nextId);
-    setNextId(nextId +1);
+    setTopics(newTopics); // 새로운 topics를 기존 topics에 반영
+    setMode('READ'); // 생성 끝났으면 읽기 모드로 변경
+    setId(nextId);  // 읽기 모드로 전환할 현재 토픽 key값 지정
+    setNextId(nextId +1);  // nextId 값 변화 -> 어떻게?
   };
 
   const handleUpdate = (title, body) => { // 완성해보세요
@@ -68,7 +61,7 @@ const App = () => {
       break;
     case 'CREATE': // 생성 모드
       content = <Create onCreate={handleCreate} />; // Article이 아니라 Create 컴포넌트 호출
-      break;
+      break;//handleCreate를는 새로운 항목을 생성
     case 'UPDATE': // 업데이트 모드
       topic = topics.find((topic) => topic.id === id); // 뭘 업데이트 할 건데? 업데이트할 topic 탐색
       content = <Update title={topic.title} body={topic.body} onUpdate={handleUpdate}/> // Aricle이 아닌 Update 불러옴
